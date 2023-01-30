@@ -14,6 +14,7 @@ public class Main {
       Owner o = c.getBean(Owner.class);
 
       x.setName("Leo");
+
       System.out.println(x);
       System.out.println(o);
 

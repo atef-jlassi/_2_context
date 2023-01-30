@@ -20,7 +20,7 @@
     </build>
     <name>_2_context</name>
 
-    <description>Demo project for Spring framework Context, Autowiring, Qualifier and more..</description>
+    <description>Wiring, Autowiring, Qualifier and more options to manage the context</description>
 
     <properties>
         <java.version>11</java.version>
