@@ -16,7 +16,7 @@ public class ProjectConfig {
   }
 
   @Bean
-  public Owner owner() {
+  public Owner owner(Cat cat) {
     Owner owner = new Owner();
 
     /**
@@ -25,8 +25,15 @@ public class ProjectConfig {
      * By calling the method 'cat()' spring will inject the instance Already exit on the spring context
      * owner.setCat(cat());
      */
+    // owner.setCat(cat());
 
-    owner.setCat(cat());
+    /**
+     * Second way of wiring Beans
+     *
+     * By defining a cat parameter  'public Owner owner(Cat cat) {}' and not calling the method any more
+     * owner.setCat(cat);
+     */
+    owner.setCat(cat);
     return owner;
   }
 }
