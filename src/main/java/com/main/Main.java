@@ -1,6 +1,5 @@
 package com.main;
 
-import com.beans.Cat;
 import com.beans.Owner;
 import com.config.ProjectConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -8,20 +7,17 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Main {
 
   public static void main(String[] args) {
-    try (var c = new AnnotationConfigApplicationContext(ProjectConfig.class)){
 
-      Cat x = c.getBean(Cat.class);
-      Owner o = c.getBean(Owner.class);
+    try(var context = new AnnotationConfigApplicationContext(ProjectConfig.class)) {
+//      Cat cat = context.getBean(Cat.class);
+      Owner owner = context.getBean(Owner.class);
 
-      x.setName("Leo");
+      /* cat.setName("Lea");
 
-      System.out.println(x);
-      System.out.println(o);
+      System.out.println(cat);*/
+      System.out.println(owner);
 
-
-
-
-
+    // System.out.println(cat.equals(owner.getCat()));
     }
   }
 

@@ -1,14 +1,18 @@
 package com.config;
 
 import com.beans.Cat;
-import com.beans.Owner;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 @Configuration
+@ComponentScan(basePackages = "com.beans")
 public class ProjectConfig {
 
-  @Bean
+
+  /**  @Bean
   public Cat cat() {
     Cat cat = new Cat();
     cat.setName("Tom");
@@ -16,27 +20,27 @@ public class ProjectConfig {
   }
 
   @Bean
-  public Owner owner(Cat cat) {
+  public Owner owner(Cat cat) { // inject by spring parameter
     Owner owner = new Owner();
-
-    /**
-     * First way of wiring Beans
-     *
-     * By calling the method 'cat()' spring will inject the instance Already exit on the spring context
-     * owner.setCat(cat());
-     */
-    // owner.setCat(cat());
-
-    /**
-     * Second way of wiring Beans
-     *
-     * By defining a cat parameter  'public Owner owner(Cat cat) {}' and not calling the method any more.
-     * When you put a parameter in a method annotated @Bean, Spring will search in the context if there is
-     * a type of this instance already exist on the context.
-     *
-     * owner.setCat(cat);
-     */
     owner.setCat(cat);
+    // owner.setCat(cat()); // will get the cat from the context
     return owner;
+  }*/
+
+  @Bean
+//  @Primary
+  @Qualifier("cat1")
+  public Cat cat1() {
+    Cat cat = new Cat();
+    cat.setName("Tom");
+    return cat;
+  }
+
+  @Bean
+  @Qualifier("cat2")
+  public Cat cat2() {
+    Cat cat = new Cat();
+    cat.setName("Leo");
+    return cat;
   }
 }
